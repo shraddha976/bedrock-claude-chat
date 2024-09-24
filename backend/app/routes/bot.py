@@ -49,6 +49,9 @@ def post_bot(
 ):
     """Create new private owned bot."""
     current_user: User = request.state.current_user
+    print(f"Request: {request}") 
+    print(f"Current user ID: {current_user.id}")
+    print(f"Bot input: {bot_input}")
 
     return create_new_bot(current_user.id, bot_input)
 

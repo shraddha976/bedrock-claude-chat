@@ -56,6 +56,10 @@ def get_related_documents(
     If the bot prohibits displaying related documents, it will return `None`.
     """
     current_user: User = request.state.current_user
+    print(f"Request: {request}") 
+    print(f"Current user ID: {current_user.id}")
+    print(f"Chat input: {chat_input}")
+
     output = fetch_related_documents(user_id=current_user.id, chat_input=chat_input)
     return output
 
@@ -66,6 +70,7 @@ def get_conversation(request: Request, conversation_id: str):
     current_user: User = request.state.current_user
 
     output = fetch_conversation(current_user.id, conversation_id)
+    print(f"Related documents output: {output}")
     return output
 
 

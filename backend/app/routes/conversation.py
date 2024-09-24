@@ -1,3 +1,6 @@
+import logging
+logging.basicConfig(level=logging.INFO)
+
 from app.repositories.conversation import (
     change_conversation_title,
     delete_conversation_by_id,
@@ -56,10 +59,9 @@ def get_related_documents(
     If the bot prohibits displaying related documents, it will return `None`.
     """
     current_user: User = request.state.current_user
-    print(f"Request: {request}") 
-    print(f"Current user ID: {current_user.id}")
-    print(f"Chat input: {chat_input}")
-
+    logging.info(f"Request: {request}") 
+    logging.info(f"Current user ID: {current_user.id}")
+    logging.info(f"Chat input: {chat_input}")
     output = fetch_related_documents(user_id=current_user.id, chat_input=chat_input)
     return output
 

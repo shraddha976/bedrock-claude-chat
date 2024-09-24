@@ -1,5 +1,6 @@
 from typing import Literal
-
+import logging
+logging.basicConfig(level=logging.INFO)
 from app.dependencies import check_creating_bot_allowed
 from app.repositories.custom_bot import (
     find_private_bot_by_id,
@@ -49,9 +50,9 @@ def post_bot(
 ):
     """Create new private owned bot."""
     current_user: User = request.state.current_user
-    print(f"Request: {request}") 
-    print(f"Current user ID: {current_user.id}")
-    print(f"Bot input: {bot_input}")
+    logging.info(f"Request: {request}") 
+    logging.info(f"Current user ID: {current_user.id}")
+    logging.info(f"Bot input: {bot_input}")
 
     return create_new_bot(current_user.id, bot_input)
 
